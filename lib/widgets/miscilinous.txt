@@ -1,0 +1,3759 @@
+// import 'package:flutter/material.dart';
+// import 'package:pet_door_user/container/category_container.dart';
+// import 'package:pet_door_user/container/homepagemkr.dart';
+// import 'package:pet_door_user/views/view_animals_home.dart';
+// import 'package:pet_door_user/widgets/colors.dart';
+
+// class HomePage extends StatefulWidget {
+//   @override
+//   State<HomePage> createState() => _HomePageState();
+// }
+
+// class _HomePageState extends State<HomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Scaffold(
+//         backgroundColor: bgr,
+//         body: Padding(
+//           padding: const EdgeInsets.all(16.0),
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Row(
+//                 children: [
+//                   CircleAvatar(
+//                     radius: 30,
+//                     backgroundImage: AssetImage('assets/userpets.jpg'),
+//                   ),
+//                   SizedBox(width: 10),
+//                   Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: [
+//                       Text(
+//                         "Hi, Adil",
+//                         style: TextStyle(
+//                           fontSize: 22,
+//                           fontWeight: FontWeight.bold,
+//                           color: Color(0xFF2D4059),
+//                         ),
+//                       ),
+//                       Text(
+//                         "Welcome back!",
+//                         style: TextStyle(
+//                           fontSize: 16,
+//                           color: Colors.grey[600],
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                   Spacer(),
+//                   IconButton(
+//                     icon: Icon(Icons.filter_list,
+//                         size: 30, color: Color(0xFF2D4059)),
+//                     onPressed: () {},
+//                   ),
+//                 ],
+//               ),
+//               SizedBox(height: 20),
+
+//               // Search Bar
+//               Container(
+//                 padding: EdgeInsets.symmetric(horizontal: 16.0),
+//                 decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.circular(25.0),
+//                   boxShadow: [
+//                     BoxShadow(
+//                       color: Colors.black12,
+//                       blurRadius: 10,
+//                       offset: Offset(0, 4),
+//                     ),
+//                   ],
+//                 ),
+//                 child: TextField(
+//                   decoration: InputDecoration(
+//                     hintText: 'Search pet to adopt',
+//                     border: InputBorder.none,
+//                     icon: Icon(Icons.search, color: Color(0xFF2D4059)),
+//                   ),
+//                 ),
+//               ),
+//               SizedBox(height: 30),
+
+//               // Category Section
+//               Text(
+//                 'Categories',
+//                 style: TextStyle(
+//                   fontSize: 18,
+//                   fontWeight: FontWeight.bold,
+//                   color: Color(0xFF2D4059),
+//                 ),
+//               ),
+//               SizedBox(height: 20),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                 children: [Expanded(child: CategoryContainer())],
+//               ),
+//               SizedBox(height: 20),
+
+//               // Pet List Section
+//               Text(
+//                 'Available Pets',
+//                 style: TextStyle(
+//                   fontSize: 18,
+//                   fontWeight: FontWeight.bold,
+//                   color: Color(0xFF2D4059),
+//                 ),
+//               ),
+//               SizedBox(height: 10),
+//               Expanded(
+//                 child: ListView(
+//                   children: [
+//                     SpecificProducts()],
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   Widget buildCategory(String name, String imagePath) {
+//     return Column(
+//       children: [
+//         Container(
+//           height: 70,
+//           width: 70,
+//           decoration: BoxDecoration(
+//             color: Colors.white,
+//             borderRadius: BorderRadius.circular(20.0),
+//             boxShadow: [
+//               BoxShadow(
+//                 color: Colors.black12,
+//                 blurRadius: 8,
+//                 offset: Offset(0, 4),
+//               ),
+//             ],
+//           ),
+//           child: ClipRRect(
+//             borderRadius: BorderRadius.circular(20.0),
+//             child: Image.asset(imagePath, fit: BoxFit.cover),
+//           ),
+//         ),
+//         SizedBox(height: 8),
+//         Text(
+//           name,
+//           style:
+//               TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF2D4059)),
+//         ),
+//       ],
+//     );
+//   }
+
+//   Widget buildPetCard(
+//       String name, String breed, String imagePath, String price) {
+//     return Container(
+//       margin: EdgeInsets.symmetric(vertical: 10.0),
+//       padding: EdgeInsets.all(16.0),
+//       decoration: BoxDecoration(
+//         color: Colors.white,
+//         borderRadius: BorderRadius.circular(16.0),
+//         boxShadow: [
+//           BoxShadow(
+//             color: Colors.black12,
+//             blurRadius: 10,
+//             offset: Offset(0, 4),
+//           ),
+//         ],
+//       ),
+//       child: Row(
+//         children: [
+//           ClipRRect(
+//             borderRadius: BorderRadius.circular(16.0),
+//             child: Image.asset(imagePath,
+//                 height: 80, width: 80, fit: BoxFit.cover),
+//           ),
+//           SizedBox(width: 20),
+//           Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Text(
+//                 name,
+//                 style: TextStyle(
+//                     fontSize: 20,
+//                     fontWeight: FontWeight.bold,
+//                     color: Color(0xFF2D4059)),
+//               ),
+//               Text(
+//                 breed,
+//                 style: TextStyle(color: Colors.grey),
+//               ),
+//               SizedBox(height: 10),
+//               Text(
+//                 'Rs $price',
+//                 style: TextStyle(
+//                   fontSize: 16,
+//                   fontWeight: FontWeight.bold,
+//                   color: Colors.green,
+//                 ),
+//               ),
+//             ],
+//           ),
+//           Spacer(),
+//           IconButton(
+//             icon: Icon(Icons.favorite_border, color: Colors.red),
+//             onPressed: () {},
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+// import 'package:flutter/material.dart';
+// import 'package:pet_door_user/container/category_container.dart';
+// import 'package:pet_door_user/controllers/db_service.dart';
+// import 'package:pet_door_user/models/productsmodel.dart';
+// import 'package:pet_door_user/widgets/colors.dart';
+
+// class HomePage extends StatefulWidget {
+//   @override
+//   State<HomePage> createState() => _HomePageState();
+// }
+
+// class _HomePageState extends State<HomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Scaffold(
+//         backgroundColor: bgr,
+//         body: Padding(
+//           padding: const EdgeInsets.all(16.0),
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               // User Profile and Search Section
+//               _buildUserProfileSection(),
+
+//               SizedBox(height: 30),
+
+//               // Category Section
+//               Text(
+//                 'Categories',
+//                 style: TextStyle(
+//                   fontSize: 18,
+//                   fontWeight: FontWeight.bold,
+//                   color: Color(0xFF2D4059),
+//                 ),
+//               ),
+//               SizedBox(height: 20),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                 children: [Expanded(child: CategoryContainer())],
+//               ),
+//               SizedBox(height: 20),
+
+//               // Available Pets Section
+//               Text(
+//                 'Available Pets',
+//                 style: TextStyle(
+//                   fontSize: 18,
+//                   fontWeight: FontWeight.bold,
+//                   color: Color(0xFF2D4059),
+//                 ),
+//               ),
+//               SizedBox(height: 10),
+
+//               // Displaying All Products Here
+//               Expanded(
+//                 child: StreamBuilder(
+//                   stream: DbService().readProducts(""), // Fetch all products
+//                   builder: (context, snapshot) {
+//                     if (snapshot.hasData) {
+//                       List<AnimalModel> products =
+//                           AnimalModel.fromJsonList(snapshot.data!.docs)
+//                               as List<AnimalModel>;
+
+//                       if (products.isEmpty) {
+//                         return Center(child: Text("No products found"));
+//                       } else {
+//                         return GridView.builder(
+//                           gridDelegate:
+//                               SliverGridDelegateWithFixedCrossAxisCount(
+//                             crossAxisCount: 2, // Items per row
+//                             crossAxisSpacing: 8.0,
+//                             mainAxisSpacing: 8.0,
+//                           ),
+//                           itemCount: products.length,
+//                           itemBuilder: (context, index) {
+//                             final product = products[index];
+//                             return buildPetCard(product);
+//                           },
+//                         );
+//                       }
+//                     } else {
+//                       return Center(child: CircularProgressIndicator());
+//                     }
+//                   },
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   // User Profile Section
+//   Widget _buildUserProfileSection() {
+//     return Row(
+//       children: [
+//         CircleAvatar(
+//           radius: 30,
+//           backgroundImage: AssetImage('assets/userpets.jpg'),
+//         ),
+//         SizedBox(width: 10),
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Text(
+//               "Hi, Adil",
+//               style: TextStyle(
+//                 fontSize: 22,
+//                 fontWeight: FontWeight.bold,
+//                 color: Color(0xFF2D4059),
+//               ),
+//             ),
+//             Text(
+//               "Welcome back!",
+//               style: TextStyle(
+//                 fontSize: 16,
+//                 color: Colors.grey[600],
+//               ),
+//             ),
+//           ],
+//         ),
+//         Spacer(),
+//         IconButton(
+//           icon: Icon(Icons.filter_list, size: 30, color: Color(0xFF2D4059)),
+//           onPressed: () {},
+//         ),
+//       ],
+//     );
+//   }
+
+//   // Method to build each pet card
+//   Widget buildPetCard(AnimalModel product) {
+//     return Card(
+//       color: Colors.grey.shade50,
+//       child: Padding(
+//         padding: const EdgeInsets.all(8.0),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Expanded(
+//               child: Container(
+//                 decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.circular(8),
+//                   image: DecorationImage(
+//                     image: NetworkImage(product.image),
+//                     fit: BoxFit.fitHeight,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//             SizedBox(height: 8),
+//             Text(
+//               product.name,
+//               style: TextStyle(fontWeight: FontWeight.bold),
+//               maxLines: 2,
+//               overflow: TextOverflow.ellipsis,
+//             ),
+//             SizedBox(height: 2),
+//             Text(
+//               "\₹${product.amount}",
+//               style: TextStyle(
+//                 fontSize: 15,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// 
+
+
+
+//homeeeee
+
+import 'package:flutter/material.dart';
+import 'package:pet_door_user/container/category_container.dart';
+import 'package:pet_door_user/controllers/db_service.dart';
+import 'package:pet_door_user/models/productsmodel.dart';
+import 'package:pet_door_user/widgets/colors.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: bgr,
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildUserProfileSection(),
+
+              SizedBox(height: 30),
+              Text(
+                'Categories',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2D4059),
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [Expanded(child: CategoryContainer())],
+              ),
+              SizedBox(height: 20),
+
+              // Available Pets Section
+              Text(
+                'Available Pets',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2D4059),
+                ),
+              ),
+              SizedBox(height: 10),
+              Expanded(
+                child: StreamBuilder(
+                  stream: DbService().readProducts(""),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<AnimalModel> products =
+                          AnimalModel.fromJsonList(snapshot.data!.docs);
+
+                      if (products.isEmpty) {
+                        return Center(child: Text("No products found"));
+                      } else {
+                        return ListView.builder(
+                          itemCount: products.length,
+                          itemBuilder: (context, index) {
+                            final product = products[index];
+                            return buildPetCard(product);
+                          },
+                        );
+                      }
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserProfileSection() {
+    return Row(
+      children: [
+        CircleAvatar(
+          radius: 30,
+          backgroundImage: AssetImage('assets/userpets.jpg'),
+        ),
+        SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Hi, Adil",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2D4059),
+              ),
+            ),
+            Text(
+              "Welcome back!",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+        Spacer(),
+        IconButton(
+          icon: Icon(Icons.filter_list, size: 30, color: Color(0xFF2D4059)),
+          onPressed: () {},
+        ),
+      ],
+    );
+  }
+
+  // Method to build each pet card
+  Widget buildPetCard(AnimalModel product) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.network(
+                product.image,
+                height: 100,
+                width: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF2D4059),
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    "Breed: ${product.breed}",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[600],
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    "Price: ₹${product.amount}",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.favorite_border, color: Colors.red),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+import 'package:flutter/material.dart';
+import 'package:pet_door_user/container/category_container.dart';
+import 'package:pet_door_user/controllers/db_service.dart';
+import 'package:pet_door_user/models/productsmodel.dart';
+import 'package:pet_door_user/widgets/colors.dart';
+import 'package:pet_door_user/widgets/search_filter.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String _searchQuery = "";
+  String _selectedCategory = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: bgr,
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildUserProfileSection(),
+              SizedBox(height: 30),
+              Text(
+                'Categories',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2D4059),
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [Expanded(child: CategoryContainer())],
+              ),
+              SizedBox(height: 20),
+
+              // Use CustomSearchField
+              CustomSearchField(
+                hintText: 'Search Pets',
+                onChanged: (value) {
+                  setState(() {
+                    _searchQuery = value.toLowerCase();
+                  });
+                },
+              ),
+              SizedBox(height: 10),
+              const Text(
+                'Available Pets',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2D4059),
+                ),
+              ),
+              SizedBox(height: 10),
+              Expanded(
+                child: StreamBuilder(
+                  stream: DbService().readProducts(_selectedCategory),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<AnimalModel> products =
+                          AnimalModel.fromJsonList(snapshot.data!.docs);
+
+                      // Filter
+                      if (_searchQuery.isNotEmpty) {
+                        products = products
+                            .where((product) => product.name
+                                .toLowerCase()
+                                .contains(_searchQuery))
+                            .toList();
+                      }
+
+                      if (products.isEmpty) {
+                        return Center(child: Text("No products found"));
+                      } else {
+                        return ListView.builder(
+                          itemCount: products.length,
+                          itemBuilder: (context, index) {
+                            final product = products[index];
+                            return buildPetCard(product);
+                          },
+                        );
+                      }
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserProfileSection() {
+    return Row(
+      children: [
+        CircleAvatar(
+          radius: 28,
+          backgroundImage: AssetImage('assets/userpets.jpg'),
+        ),
+        SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Hi, Adil",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2D4059),
+              ),
+            ),
+            Text(
+              "Welcome back!",
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+        Spacer(),
+        IconButton(
+          icon: Icon(Icons.filter_list, size: 30, color: Color(0xFF2D4059)),
+          onPressed: () {
+            _showFilterDialog();
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget buildPetCard(AnimalModel product) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.network(
+                product.image,
+                height: 100,
+                width: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF2D4059),
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    "Breed: ${product.breed}",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[600],
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    "Price: ₹${product.amount}",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.favorite_border, color: Colors.red),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  //filter
+  void _showFilterDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return CustomFilterDialog(
+          selectedCategory: _selectedCategory,
+          onCategoryChanged: (value) {
+            setState(() {
+              _selectedCategory = value ?? "";
+            });
+          },
+          onReset: () {
+            setState(() {
+              _selectedCategory = "";
+            });
+            Navigator.pop(context);
+          },
+          onApply: () {
+            Navigator.pop(context);
+          },
+        );
+      },
+    );
+  }
+}
+
+
+
+//login without gsignin
+
+// import 'package:flutter/material.dart';
+// import 'package:pet_door_user/controllers/auth_service.dart';
+// import 'package:pet_door_user/views/register.dart';
+
+// class LoginPage extends StatefulWidget {
+//   const LoginPage({super.key});
+
+//   @override
+//   State<LoginPage> createState() => _LoginPageState();
+// }
+
+// class _LoginPageState extends State<LoginPage> {
+//   final formKey = GlobalKey<FormState>();
+//   TextEditingController _emailController = TextEditingController();
+//   TextEditingController _passwordController = TextEditingController();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Stack(
+//         children: [
+//           Container(
+//             decoration: BoxDecoration(
+//               image: DecorationImage(
+//                 image: AssetImage('assets/userpets.jpg'),
+//                 fit: BoxFit.cover,
+//                 colorFilter: ColorFilter.mode(
+//                   Colors.black.withOpacity(0.3),
+//                   BlendMode.darken,
+//                 ),
+//               ),
+//             ),
+//           ),
+//           Center(
+//             child: SingleChildScrollView(
+//               padding: EdgeInsets.symmetric(horizontal: 24),
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Container(
+//                     decoration: BoxDecoration(
+//                       shape: BoxShape.circle,
+//                       boxShadow: [
+//                         BoxShadow(
+//                           color: Colors.black.withOpacity(0.3),
+//                           blurRadius: 20,
+//                           offset: Offset(0, 10),
+//                         ),
+//                       ],
+//                     ),
+//                     child: CircleAvatar(
+//                       backgroundImage: AssetImage('assets/3744410.jpg'),
+//                       radius: 50,
+//                     ),
+//                   ),
+//                   SizedBox(height: 40),
+//                   // Welcome text
+//                   Text(
+//                     'Welcome to PetDoor!',
+//                     style: TextStyle(
+//                       fontSize: 32,
+//                       color: Colors.orangeAccent,
+//                       fontWeight: FontWeight.bold,
+//                       letterSpacing: 1.2,
+//                     ),
+//                   ),
+//                   SizedBox(height: 8),
+//                   Text(
+//                     'Login as a Shelter Adopter',
+//                     style: TextStyle(
+//                       fontSize: 18,
+//                       color: Colors.white.withOpacity(0.9),
+//                     ),
+//                   ),
+//                   SizedBox(height: 50),
+//                   Form(
+//                     key: formKey,
+//                     child: Column(
+//                       children: [
+//                         // Email input field
+//                         TextFormField(
+//                           controller: _emailController,
+//                           decoration: InputDecoration(
+//                             labelText: 'Email',
+//                             labelStyle: TextStyle(color: Colors.orangeAccent),
+//                             filled: true,
+//                             fillColor: Colors.white.withOpacity(0.3),
+//                             prefixIcon: Icon(Icons.email, color: Colors.white),
+//                             border: OutlineInputBorder(
+//                               borderRadius: BorderRadius.circular(30),
+//                               borderSide: BorderSide.none,
+//                             ),
+//                             errorStyle: TextStyle(color: Colors.redAccent),
+//                           ),
+//                           style: TextStyle(color: Colors.white),
+//                           validator: (value) =>
+//                               value!.isEmpty ? 'This field is required' : null,
+//                         ),
+//                         SizedBox(height: 20),
+//                         // Password input field
+//                         TextFormField(
+//                           controller: _passwordController,
+//                           obscureText: true,
+//                           decoration: InputDecoration(
+//                             labelText: 'Password',
+//                             labelStyle: TextStyle(color: Colors.orangeAccent),
+//                             filled: true,
+//                             fillColor: Colors.white.withOpacity(0.3),
+//                             prefixIcon: Icon(Icons.lock, color: Colors.white),
+//                             border: OutlineInputBorder(
+//                               borderRadius: BorderRadius.circular(30),
+//                               borderSide: BorderSide.none,
+//                             ),
+//                             errorStyle: TextStyle(color: Colors.redAccent),
+//                           ),
+//                           style: TextStyle(color: Colors.white),
+//                           validator: (value) =>
+//                               value!.isEmpty ? 'This field is required' : null,
+//                         ),
+//                         SizedBox(height: 10),
+//                         // Forgot Password
+//                         Align(
+//                           alignment: Alignment.centerRight,
+//                           child: TextButton(
+//                             onPressed: () {
+//                               showDialog(
+//                                   context: context,
+//                                   builder: (builder) {
+//                                     return AlertDialog(
+//                                       title: Text('Reset your password'),
+//                                       content: Column(
+//                                         mainAxisSize: MainAxisSize.min,
+//                                         children: [
+//                                           Text('Enter your mail'),
+//                                           SizedBox(height: 10),
+//                                           TextFormField(
+//                                             controller: _emailController,
+//                                           ),
+//                                         ],
+//                                       ),
+//                                       actions: [
+//                                         TextButton(
+//                                             onPressed: () {
+//                                               Navigator.pop(context);
+//                                             },
+//                                             child: Text('Cancel')),
+//                                         TextButton(
+//                                             onPressed: () async {
+//                                               if (_emailController
+//                                                   .text.isEmpty) {
+//                                                 ScaffoldMessenger.of(context)
+//                                                     .showSnackBar(SnackBar(
+//                                                         content: Text(
+//                                                             'Email can\'t be empty')));
+//                                               }
+//                                               await AuthService()
+//                                                   .resetPassword(
+//                                                       _emailController.text)
+//                                                   .then((value) {
+//                                                 ScaffoldMessenger.of(context)
+//                                                     .showSnackBar(SnackBar(
+//                                                         content: Text(
+//                                                             'Password reset link is sent')));
+//                                                 Navigator.pop(context);
+//                                               });
+//                                             },
+//                                             child: Text('Continue'))
+//                                       ],
+//                                     );
+//                                   });
+//                             },
+//                             child: Text(
+//                               'Forgot Password?',
+//                               style: TextStyle(
+//                                 color: Colors.orangeAccent,
+//                                 fontSize: 14,
+//                               ),
+//                             ),
+//                           ),
+//                         ),
+//                         SizedBox(height: 40),
+//                         ElevatedButton.icon(
+//                           onPressed: () {
+//                             if (formKey.currentState!.validate()) {
+//                               AuthService()
+//                                   .loginWithEmail(_emailController.text,
+//                                       _passwordController.text)
+//                                   .then((value) {
+//                                 if (value == 'Login Successful') {
+//                                   ScaffoldMessenger.of(context).showSnackBar(
+//                                       SnackBar(
+//                                           content: Text('Login Successful')));
+//                                   Navigator.restorablePushNamedAndRemoveUntil(
+//                                       context, '/home', (route) => false);
+//                                 } else {
+//                                   ScaffoldMessenger.of(context)
+//                                       .showSnackBar(SnackBar(
+//                                     content: Text(value,
+//                                         style: TextStyle(color: Colors.white)),
+//                                     backgroundColor: Colors.red,
+//                                   ));
+//                                 }
+//                               });
+//                             }
+//                           },
+//                           style: ElevatedButton.styleFrom(
+//                             backgroundColor: Colors.orangeAccent,
+//                             foregroundColor: Colors.white,
+//                             elevation: 5,
+//                             shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(30),
+//                             ),
+//                             padding: EdgeInsets.symmetric(
+//                               horizontal: 120,
+//                               vertical: 15,
+//                             ),
+//                           ),
+//                           icon: Icon(Icons.pets),
+//                           label: Text(
+//                             'Login',
+//                             style: TextStyle(fontSize: 18),
+//                           ),
+//                         ),
+//                         SizedBox(height: 30),
+//                         // Sign-up option
+//                         Row(
+//                           mainAxisAlignment: MainAxisAlignment.center,
+//                           children: [
+//                             Text(
+//                               'Don’t have an account?',
+//                               style: TextStyle(color: Colors.white),
+//                             ),
+//                             TextButton(
+//                               onPressed: () {
+//                                 Navigator.push(
+//                                   context,
+//                                   MaterialPageRoute(
+//                                     builder: (context) => RegisterPage(),
+//                                   ),
+//                                 );
+//                               },
+//                               child: Text(
+//                                 'Sign Up',
+//                                 style: TextStyle(
+//                                   color: Colors.orangeAccent,
+//                                   fontWeight: FontWeight.bold,
+//                                 ),
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+
+//logon without service calssl
+import 'package:flutter/material.dart';
+import 'package:pet_door_user/controllers/auth_service.dart';
+import 'package:pet_door_user/views/register.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final formKey = GlobalKey<FormState>();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/adopt4.jpg'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.4),
+                  BlendMode.darken,
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          blurRadius: 20,
+                          offset: Offset(0, 10),
+                        ),
+                      ],
+                    ),
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/3744410.jpg'),
+                      radius: 50,
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  // Welcome text
+                  Text(
+                    'Welcome to PetDoor!',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.orangeAccent,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Login as Adopter',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white.withOpacity(0.9),
+                    ),
+                  ),
+                  SizedBox(height: 35),
+                  Form(
+                    key: formKey,
+                    autovalidateMode: AutovalidateMode
+                        .onUserInteraction, // Enable auto-validation
+                    child: Column(
+                      children: [
+                        // Email input field
+                        TextFormField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            labelStyle: TextStyle(color: Colors.orangeAccent),
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.3),
+                            prefixIcon: Icon(Icons.email, color: Colors.white),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide.none,
+                            ),
+                            errorStyle: TextStyle(color: Colors.redAccent),
+                          ),
+                          style: TextStyle(color: Colors.white),
+                          validator: (value) =>
+                              value!.isEmpty ? 'This field is required' : null,
+                        ),
+                        SizedBox(height: 20),
+                        // Password input field
+                        TextFormField(
+                          controller: _passwordController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            labelStyle: TextStyle(color: Colors.orangeAccent),
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.3),
+                            prefixIcon: Icon(Icons.lock, color: Colors.white),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide.none,
+                            ),
+                            errorStyle: TextStyle(color: Colors.redAccent),
+                          ),
+                          style: TextStyle(color: Colors.white),
+                          validator: (value) =>
+                              value!.isEmpty ? 'This field is required' : null,
+                        ),
+                        SizedBox(height: 10),
+                        // Forgot Password
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (builder) {
+                                    return AlertDialog(
+                                      title: Text('Reset your password'),
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text('Enter your mail'),
+                                          SizedBox(height: 10),
+                                          TextFormField(
+                                            controller: _emailController,
+                                          ),
+                                        ],
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text('Cancel')),
+                                        TextButton(
+                                            onPressed: () async {
+                                              if (_emailController
+                                                  .text.isEmpty) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(SnackBar(
+                                                        content: Text(
+                                                            'Email can\'t be empty')));
+                                              } else {
+                                                await AuthService()
+                                                    .resetPassword(
+                                                        _emailController.text)
+                                                    .then((value) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(SnackBar(
+                                                          content: Text(
+                                                              'Password reset link is sent')));
+                                                  Navigator.pop(context);
+                                                });
+                                              }
+                                            },
+                                            child: Text('Continue'))
+                                      ],
+                                    );
+                                  });
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                color: Colors.orangeAccent,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 30),
+                        ElevatedButton.icon(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              AuthService()
+                                  .loginWithEmail(_emailController.text,
+                                      _passwordController.text)
+                                  .then((value) {
+                                if (value == 'Login Successful') {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text('Login Successful')));
+                                  Navigator.restorablePushNamedAndRemoveUntil(
+                                      context, '/home', (route) => false);
+                                } else {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text(value,
+                                        style: TextStyle(color: Colors.white)),
+                                    backgroundColor: Colors.red,
+                                  ));
+                                }
+                              });
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.orangeAccent,
+                            foregroundColor: Colors.white,
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 120,
+                              vertical: 15,
+                            ),
+                          ),
+                          icon: Icon(Icons.pets),
+                          label: Text(
+                            'Login',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                        SizedBox(height: 30),
+                        // Sign-up option
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Don’t have an account?',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => RegisterPage(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'Sign Up',
+                                style: TextStyle(
+                                  color: Colors.orangeAccent,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+//homeeeeeeeeeee
+import 'package:flutter/material.dart';
+import 'package:pet_door_user/container/category_container.dart';
+import 'package:pet_door_user/controllers/db_service.dart';
+import 'package:pet_door_user/models/productsmodel.dart';
+import 'package:pet_door_user/widgets/colors.dart';
+import 'package:pet_door_user/widgets/search_filter.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String _searchQuery = "";
+  String _selectedCategory = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: bgr,
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildUserProfileSection(),
+              SizedBox(height: 30),
+              Text(
+                'Categories',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2D4059),
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [Expanded(child: CategoryContainer())],
+              ),
+              SizedBox(height: 20),
+
+              // Use CustomSearchField
+              CustomSearchField(
+                hintText: 'Search Pets',
+                onChanged: (value) {
+                  setState(() {
+                    _searchQuery = value.toLowerCase();
+                  });
+                },
+              ),
+              SizedBox(height: 10),
+              const Text(
+                'Available Pets',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2D4059),
+                ),
+              ),
+              SizedBox(height: 10),
+              Expanded(
+                child: StreamBuilder(
+                  stream: DbService().readProducts(_selectedCategory),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<AnimalModel> products =
+                          AnimalModel.fromJsonList(snapshot.data!.docs);
+
+                      // Filter
+                      if (_searchQuery.isNotEmpty) {
+                        products = products
+                            .where((product) => product.name
+                                .toLowerCase()
+                                .contains(_searchQuery))
+                            .toList();
+                      }
+
+                      if (products.isEmpty) {
+                        return Center(child: Text("No products found"));
+                      } else {
+                        return ListView.builder(
+                          itemCount: products.length,
+                          itemBuilder: (context, index) {
+                            final product = products[index];
+                            return buildPetCard(product);
+                          },
+                        );
+                      }
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserProfileSection() {
+    return Row(
+      children: [
+        CircleAvatar(
+          radius: 28,
+          backgroundImage: AssetImage('assets/userpets.jpg'),
+        ),
+        SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Hi, Adil",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2D4059),
+              ),
+            ),
+            Text(
+              "Welcome back!",
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+        Spacer(),
+        IconButton(
+          icon: Icon(Icons.filter_list, size: 30, color: Color(0xFF2D4059)),
+          onPressed: () {
+            _showFilterDialog();
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget buildPetCard(AnimalModel product) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.network(
+                product.image,
+                height: 100,
+                width: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF2D4059),
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    "Breed: ${product.breed}",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[600],
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    "Price: ₹${product.amount}",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+           IconButton(
+  icon: Icon(
+    product.isFavorite ? Icons.favorite : Icons.favorite_border,
+    color: Colors.red,
+  ),
+  onPressed: () async {
+    setState(() {
+      product.isFavorite = !product.isFavorite;
+    });
+
+    if (product.isFavorite) {
+      await DbService().addProductToFavorites(product.id, product);
+    } else {
+      await DbService().removeProductFromFavorites(product.id);
+    }
+  },
+),
+
+
+          ],
+        ),
+      ),
+    );
+  }
+
+  //filter
+  void _showFilterDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return CustomFilterDialog(
+          selectedCategory: _selectedCategory,
+          onCategoryChanged: (value) {
+            setState(() {
+              _selectedCategory = value ?? "";
+            });
+          },
+          onReset: () {
+            setState(() {
+              _selectedCategory = "";
+            });
+            Navigator.pop(context);
+          },
+          onApply: () {
+            Navigator.pop(context);
+          },
+        );
+      },
+    );
+  }
+}
+
+
+
+
+//viewwwwwww
+
+
+import 'package:flutter/material.dart';
+import 'package:pet_door_user/models/cart_model.dart';
+import 'package:pet_door_user/models/productsmodel.dart';
+import 'package:pet_door_user/provider/cart_provider.dart';
+import 'package:pet_door_user/widgets/appbar.dart';
+import 'package:pet_door_user/widgets/colors.dart';
+import 'package:provider/provider.dart';
+
+class ViewProduct extends StatefulWidget {
+  const ViewProduct({super.key});
+
+  @override
+  State<ViewProduct> createState() => _ViewProductState();
+}
+
+class _ViewProductState extends State<ViewProduct> {
+  @override
+  Widget build(BuildContext context) {
+    final arguments = ModalRoute.of(context)!.settings.arguments as AnimalModel;
+
+    return Scaffold(
+      backgroundColor: bgr,
+      appBar: CustomAppBar(title: "Animal Details"),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                elevation: 8,
+                shadowColor: Colors.black26,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                      child: Image.network(
+                        arguments.image,
+                        height: 300,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.deepPurpleAccent, Colors.blueAccent],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: const BorderRadius.vertical(
+                          bottom: Radius.circular(20),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Text(
+                            arguments.name,
+                            style: const TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Spacer(),
+                          Text(
+                            "Breed :${arguments.breed}",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 5),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Details",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.teal.shade800,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _buildIconLabel(
+                              Icons.monetization_on, "₹ ${arguments.amount}"),
+                          _buildIconLabel(
+                              Icons.cake, "Age: ${arguments.age} years"),
+                          _buildIconLabel(
+                              arguments.gender == 'Male'
+                                  ? Icons.male
+                                  : Icons.female,
+                              arguments.gender),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              // Description Card
+              SizedBox(
+                height: 140,
+                width: 400,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  elevation: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Description",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.teal.shade800,
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        Text(
+                          arguments.description,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.grey.shade700,
+                            height: 1.5,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: 400,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Provider.of<CartProvider>(context, listen: false).addToCart(
+                        CartModel(productId: arguments.id, quantity: 1));
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text("Added to cart")));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40.0, vertical: 14.0),
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    backgroundColor: Colors.teal.shade800,
+                    shadowColor: Colors.teal.shade400,
+                  ),
+                  child: const Text(
+                    'Adopt Now',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30), // Extra space at the bottom
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Helper method to build icons with labels for details
+  Widget _buildIconLabel(IconData icon, String label) {
+    return Row(
+      children: [
+        Icon(icon, color: Colors.teal.shade800),
+        const SizedBox(width: 6),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+dbbbbbbbbbbbbbbbbbbbbbbbbbbb
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pet_door_user/models/cart_model.dart';
+import 'package:pet_door_user/models/productsmodel.dart';
+
+class DbService {
+  User? user = FirebaseAuth.instance.currentUser;
+
+  // USER DATA
+  // save user data after creating new account
+  Future saveUserData({required String name, required String email}) async {
+    try {
+      Map<String, dynamic> data = {
+        "name": name,
+        "email": email,
+      };
+      await FirebaseFirestore.instance
+          .collection("shop_users")
+          .doc(user!.uid)
+          .set(data);
+    } catch (e) {
+      print("error on saving user data: $e");
+    }
+  }
+
+  // update other data in database
+  Future updateUserData({required Map<String, dynamic> extraData}) async {
+    await FirebaseFirestore.instance
+        .collection("shop_users")
+        .doc(user!.uid)
+        .update(extraData);
+  }
+
+  // read user current  user data
+  Stream<DocumentSnapshot> readUserData() {
+    return FirebaseFirestore.instance
+        .collection("shop_users")
+        .doc(user!.uid)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> readCategories() {
+    return FirebaseFirestore.instance
+        .collection("animal_categories")
+        .snapshots();
+  }
+
+  // PRODUCTS
+  // read products of specific categories
+  Stream<QuerySnapshot> readProducts(String category) {
+    if (category.isEmpty) {
+      // Return all products if no category is specified
+      return FirebaseFirestore.instance.collection("animal_list").snapshots();
+    } else {
+      // Return products filtered by the specified category
+      return FirebaseFirestore.instance
+          .collection("animal_list")
+          .where("category", isEqualTo: category.toLowerCase())
+          .snapshots();
+    }
+  }
+
+  Stream<QuerySnapshot> readPromos() {
+    return FirebaseFirestore.instance.collection("shop_promos").snapshots();
+  }
+
+  Stream<QuerySnapshot> readBanners() {
+    return FirebaseFirestore.instance.collection("shop_banners").snapshots();
+  }
+
+  //--------------------------------------------------
+
+  Future<void> addProductToFavorites(
+      String productId, AnimalModel product) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection("shop_users")
+          .doc(user!.uid)
+          .collection("favorites")
+          .doc(productId)
+          .set(product.toJson());
+    } catch (e) {
+      print("Error adding product to favorites: $e");
+    }
+  }
+
+  // Remove product from favorites
+  Future<void> removeProductFromFavorites(String productId) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection("shop_users")
+          .doc(user!.uid)
+          .collection("favorites")
+          .doc(productId)
+          .delete();
+    } catch (e) {
+      print("Error removing product from favorites: $e");
+    }
+  }
+
+  // Read user's favorite products
+  Stream<QuerySnapshot> readUserFavorites() {
+    return FirebaseFirestore.instance
+        .collection("shop_users")
+        .doc(user!.uid)
+        .collection("favorites")
+        .snapshots();
+  }
+
+  //caaaaaaaaaaaaaaaatyyyyyyyyyyyyyyyyyyyy
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+  // CART
+  // display the user cart
+
+  Stream<QuerySnapshot> readUserCart() {
+    return FirebaseFirestore.instance
+        .collection("shop_users")
+        .doc(user!.uid)
+        .collection("cart")
+        .snapshots();
+  }
+
+  // adding product to the cart
+  Future addToCart({required CartModel cartData}) async {
+    try {
+      // update
+      await FirebaseFirestore.instance
+          .collection("shop_users")
+          .doc(user!.uid)
+          .collection("cart")
+          .doc(cartData.productId)
+          .update({
+        "product_id": cartData.productId,
+        "quantity": FieldValue.increment(1)
+      });
+    } on FirebaseException catch (e) {
+      print("firebase exception : ${e.code}");
+      if (e.code == "not-found") {
+        // insert
+        await FirebaseFirestore.instance
+            .collection("shop_users")
+            .doc(user!.uid)
+            .collection("cart")
+            .doc(cartData.productId)
+            .set({"product_id": cartData.productId, "quantity": 1});
+      }
+    }
+  }
+
+  // delete specific product from cart
+  Future deleteItemFromCart({required String productId}) async {
+    await FirebaseFirestore.instance
+        .collection("shop_users")
+        .doc(user!.uid)
+        .collection("cart")
+        .doc(productId)
+        .delete();
+  }
+
+  // empty users cart
+  Future emptyCart() async {
+    await FirebaseFirestore.instance
+        .collection("shop_users")
+        .doc(user!.uid)
+        .collection("cart")
+        .get()
+        .then((value) {
+      for (DocumentSnapshot ds in value.docs) {
+        ds.reference.delete();
+      }
+    });
+  }
+
+  // decrease count of item
+  Future decreaseCount({required String productId}) async {
+    await FirebaseFirestore.instance
+        .collection("shop_users")
+        .doc(user!.uid)
+        .collection("cart")
+        .doc(productId)
+        .update({"quantity": FieldValue.increment(-1)});
+  }
+
+    Stream<QuerySnapshot> searchProducts(List<String> docIds) {
+    return FirebaseFirestore.instance
+        .collection("shop_products")
+        .where(FieldPath.documentId, whereIn: docIds)
+        .snapshots();
+  }
+
+  // // reduce the count of products after purchase
+  // Future reduceQuantity(
+  //     {required String productId, required int quantity}) async {
+  //   await FirebaseFirestore.instance
+  //       .collection("shop_products")
+  //       .doc(productId)
+  //       .update({"quantity": FieldValue.increment(-quantity)});
+  // }
+}
+
+
+
+///cart container.
+
+
+import 'package:flutter/material.dart';
+import 'package:pet_door_user/models/cart_model.dart';
+import 'package:pet_door_user/provider/cart_provider.dart';
+import 'package:provider/provider.dart';
+
+class CartContainer extends StatefulWidget {
+  final String image, name, productId, breed;
+  final int amount, age, maxQuantity, selectedQuantity;
+  const CartContainer(
+      {super.key,
+      required this.image,
+      required this.name,
+      required this.breed,
+      required this.productId,
+      required this.amount,
+      required this.age,
+      required this.maxQuantity,
+      required this.selectedQuantity});
+
+  @override
+  State<CartContainer> createState() => _CartContainerState();
+}
+
+class _CartContainerState extends State<CartContainer> {
+  int count = 1;
+
+  increaseCount(int max) async {
+    if (count >= max) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Maximum Quantity reached"),
+      ));
+      return;
+    } else {
+      Provider.of<CartProvider>(context, listen: false)
+          .addToCart(CartModel(productId: widget.productId, quantity: count));
+      setState(() {
+        count++;
+      });
+    }
+  }
+
+  decreaseCount() async {
+    if (count > 1) {
+      Provider.of<CartProvider>(context, listen: false)
+          .decreaseCount(widget.productId);
+      setState(() {
+        count--;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    count = widget.selectedQuantity;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    height: 80, width: 80, child: Image.network(widget.image)),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          child: Text(
+                        widget.name,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w600),
+                      )),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 2,
+                          ),
+                          Text(
+                            "${widget.breed}",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "\₹${widget.amount}",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                IconButton(
+                    onPressed: () async {
+                      Provider.of<CartProvider>(context, listen: false)
+                          .deleteItem(widget.productId);
+                    },
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.red.shade400,
+                    ))
+              ],
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Row(
+              children: [
+                // Text(
+                //   "Quantity:",
+                //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                // ),
+
+                // Container(
+                //   height: 40,
+                //   width: 40,
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(10),
+                //     color: Colors.grey.shade300,
+                //   ),
+                //   child: IconButton(
+                //       onPressed: () async {
+                //         increaseCount(widget.maxQuantity);
+                //       },
+                //       icon: Icon(Icons.add)),
+                // ),
+                SizedBox(
+                  width: 8,
+                ),
+                // Text(
+                //   "$count",
+                //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                // ),
+                // SizedBox(
+                //   width: 8,
+                // ),
+                // Container(
+                //   height: 40,
+                //   width: 40,
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(10),
+                //     color: Colors.grey.shade300,
+                //   ),
+                //   child: IconButton(
+                //       onPressed: () async {
+                //         decreaseCount();
+                //       },
+                //       icon: Icon(Icons.remove)),
+                // ),
+                SizedBox(
+                  width: 8,
+                ),
+                Spacer(),
+                Text("Price:"),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "\₹${widget.amount * count}",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+//homeeeeeeeeeeeeeeeeee
+
+
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:pet_door_user/container/category_container.dart';
+import 'package:pet_door_user/controllers/db_service.dart';
+import 'package:pet_door_user/models/productsmodel.dart';
+import 'package:pet_door_user/views/view_animals.dart';
+import 'package:pet_door_user/widgets/colors.dart';
+import 'package:pet_door_user/widgets/search_filter.dart';
+import 'package:pet_door_user/widgets/userprofile.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String _searchQuery = "";
+  String _selectedCategory = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: bgr,
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              UserProfileSection(
+                onFilterTap: _showFilterDialog,
+              ),
+              SizedBox(height: 30),
+              Text(
+                'Categories',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2D4059),
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [Expanded(child: CategoryContainer())],
+              ),
+              SizedBox(height: 20),
+
+              // Use CustomSearchField
+              CustomSearchField(
+                hintText: 'Search Pets',
+                onChanged: (value) {
+                  setState(() {
+                    _searchQuery = value.toLowerCase();
+                  });
+                },
+              ),
+              SizedBox(height: 10),
+              const Text(
+                'Available Pets',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2D4059),
+                ),
+              ),
+              SizedBox(height: 10),
+              Expanded(
+                child: StreamBuilder(
+                  stream: DbService().readProducts(_selectedCategory),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<AnimalModel> products =
+                          AnimalModel.fromJsonList(snapshot.data!.docs);
+
+                      // Filter
+                      if (_searchQuery.isNotEmpty) {
+                        products = products
+                            .where((product) => product.name
+                                .toLowerCase()
+                                .contains(_searchQuery))
+                            .toList();
+                      }
+
+                      if (products.isEmpty) {
+                        return Center(child: Text("No products found"));
+                      } else {
+                        return ListView.builder(
+                          itemCount: products.length,
+                          itemBuilder: (context, index) {
+                            final product = products[index];
+                            return buildPetCard(product);
+                          },
+                        );
+                      }
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Widget _buildUserProfileSection() {
+  //   return Row(
+  //     children: [
+  //       CircleAvatar(
+  //         radius: 28,
+  //         backgroundImage: AssetImage('assets/userpets.jpg'),
+  //       ),
+  //       SizedBox(width: 10),
+  //       Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           Text(
+  //             "Hi, Adil",
+  //             style: TextStyle(
+  //               fontSize: 20,
+  //               fontWeight: FontWeight.bold,
+  //               color: Color(0xFF2D4059),
+  //             ),
+  //           ),
+  //           Text(
+  //             "Welcome back!",
+  //             style: TextStyle(
+  //               fontSize: 14,
+  //               color: Colors.grey[600],
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //       Spacer(),
+  //       // Stylish Lottie Animation
+  //       Container(
+  //         height: 60,
+  //         width: 60,
+  //         decoration: BoxDecoration(
+  //           color: Colors.white,
+  //           shape: BoxShape.circle,
+  //           boxShadow: [
+  //             BoxShadow(
+  //               color: Colors.black.withOpacity(0.1),
+  //               blurRadius: 8,
+  //               spreadRadius: 3,
+  //             ),
+  //           ],
+  //         ),
+  //         child: Padding(
+  //           padding: const EdgeInsets.all(6.0),
+  //           child: GestureDetector(
+  //             onTap: () => Navigator.pushNamed(context, "/cart"),
+  //             child: Lottie.asset(
+  //               'assets/cartani.json',
+  //               height: 50,
+  //               width: 50,
+  //               fit: BoxFit.cover,
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //       IconButton(
+  //         icon: Icon(Icons.filter_list, size: 30, color: Color(0xFF2D4059)),
+  //         onPressed: () {
+  //           _showFilterDialog();
+  //         },
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  Widget buildPetCard(AnimalModel product) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ViewProduct(),
+            settings: RouteSettings(
+              arguments: product,
+            ),
+          ),
+        );
+      },
+      child: Card(
+        margin: EdgeInsets.symmetric(vertical: 10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        elevation: 5,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  product.image,
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.name,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2D4059),
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      "Breed: ${product.breed}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey[600],
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      "Price: ₹${product.amount}",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              IconButton(
+                icon: Icon(
+                  product.isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: Colors.red,
+                ),
+                onPressed: () async {
+                  setState(() {
+                    product.isFavorite = !product.isFavorite;
+                  });
+
+                  if (product.isFavorite) {
+                    await DbService()
+                        .addProductToFavorites(product.id, product);
+                  } else {
+                    await DbService().removeProductFromFavorites(product.id);
+                  }
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  //filter
+  void _showFilterDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return CustomFilterDialog(
+          selectedCategory: _selectedCategory,
+          onCategoryChanged: (value) {
+            setState(() {
+              _selectedCategory = value ?? "";
+            });
+          },
+          onReset: () {
+            setState(() {
+              _selectedCategory = "";
+            });
+            Navigator.pop(context);
+          },
+          onApply: () {
+            Navigator.pop(context);
+          },
+        );
+      },
+    );
+  }
+}
+
+
+
+import 'package:flutter/material.dart';
+import 'package:pet_door_user/models/cart_model.dart';
+import 'package:pet_door_user/provider/cart_provider.dart';
+import 'package:provider/provider.dart';
+
+class CartContainer extends StatefulWidget {
+  final String image, name, productId, breed;
+  final int new_price, old_price, maxQuantity, selectedQuantity;
+  const CartContainer(
+      {super.key,
+      required this.image,
+      required this.breed,
+      required this.name,
+      required this.productId,
+      required this.new_price,
+      required this.old_price,
+      required this.maxQuantity,
+      required this.selectedQuantity});
+
+  @override
+  State<CartContainer> createState() => _CartContainerState();
+}
+
+class _CartContainerState extends State<CartContainer> {
+  int count = 1;
+
+  increaseCount(int max) async {
+    if (count >= max) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Maximum Quantity reached"),
+      ));
+      return;
+    } else {
+      Provider.of<CartProvider>(context, listen: false)
+          .addToCart(CartModel(productId: widget.productId, quantity: count));
+      setState(() {
+        count++;
+      });
+    }
+  }
+
+  decreaseCount() async {
+    if (count > 1) {
+      Provider.of<CartProvider>(context, listen: false)
+          .decreaseCount(widget.productId);
+      setState(() {
+        count--;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    count = widget.selectedQuantity;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    height: 80, width: 80, child: Image.network(widget.image)),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          child: Text(
+                        widget.name,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w600),
+                      )),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 2,
+                          ),
+                          Text(
+                            "${widget.breed}",
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "\₹${widget.new_price}",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                IconButton(
+                    onPressed: () async {
+                      Provider.of<CartProvider>(context, listen: false)
+                          .deleteItem(widget.productId);
+                    },
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.red.shade400,
+                    ))
+              ],
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Row(
+              children: [
+                Text(
+                  "Quantity:",
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey.shade300,
+                  ),
+                  child: IconButton(
+                      onPressed: () async {
+                        increaseCount(widget.maxQuantity);
+                      },
+                      icon: Icon(Icons.add)),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "$count",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey.shade300,
+                  ),
+                  child: IconButton(
+                      onPressed: () async {
+                        decreaseCount();
+                      },
+                      icon: Icon(Icons.remove, size: 18)),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Spacer(),
+                Text("Total:"),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "\₹${widget.new_price * count}",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+/////////////////////////checkouttttttttttttt.
+
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_stripe/flutter_stripe.dart';
+// import 'package:pet_door_user/controllers/db_service.dart';
+// import 'package:pet_door_user/controllers/payments.dart';
+// import 'package:pet_door_user/provider/cart_provider.dart';
+// import 'package:pet_door_user/provider/user_provider.dart';
+// import 'package:pet_door_user/widgets/appbar.dart';
+// import 'package:provider/provider.dart';
+
+// class Checkout extends StatefulWidget {
+//   const Checkout({super.key});
+
+//   @override
+//   State<Checkout> createState() => _CheckoutPageState();
+// }
+
+// class _CheckoutPageState extends State<Checkout> {
+//   Future<void> initPaymentSheet(int cost) async {
+//     try {
+//       final user = Provider.of<UserProvider>(context, listen: false);
+//       // 1. create payment intent on the server
+//       final data = await createPaymentIntent(
+//           name: user.name,
+//           address: user.address,
+//           amount: (cost * 100).toString());
+
+//       // 2. initialize the payment sheet
+//       await Stripe.instance.initPaymentSheet(
+//         paymentSheetParameters: SetupPaymentSheetParameters(
+//           customFlow: false,
+//           merchantDisplayName: 'Flutter Stripe Store Demo',
+//           paymentIntentClientSecret: data['client_secret'],
+//           customerEphemeralKeySecret: data['ephemeralKey'],
+//           customerId: data['id'],
+//           style: ThemeMode.dark,
+//         ),
+//       );
+//     } catch (e) {
+//       ScaffoldMessenger.of(context).showSnackBar(
+//         SnackBar(content: Text('Error: $e')),
+//       );
+//       rethrow;
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: CustomAppBar(title: 'Checkout'),
+//       body: SingleChildScrollView(
+//         child: Consumer<UserProvider>(
+//           builder: (context, userData, child) => Consumer<CartProvider>(
+//             builder: (context, cartData, child) {
+//               return Padding(
+//                 padding: const EdgeInsets.all(12.0),
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     Text(
+//                       "Delivery Details",
+//                       style:
+//                           TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+//                     ),
+//                     Container(
+//                       padding: EdgeInsets.all(16),
+//                       decoration: BoxDecoration(
+//                         color: Colors.grey.shade200,
+//                         borderRadius: BorderRadius.circular(10),
+//                       ),
+//                       child: Row(
+//                         children: [
+//                           SizedBox(
+//                             width: MediaQuery.of(context).size.width * .65,
+//                             child: Column(
+//                               crossAxisAlignment: CrossAxisAlignment.start,
+//                               children: [
+//                                 Text(
+//                                   userData.name,
+//                                   style: TextStyle(
+//                                       fontSize: 16,
+//                                       fontWeight: FontWeight.w500),
+//                                 ),
+//                                 Text(userData.email),
+//                                 Text(userData.address),
+//                                 Text(userData.phone),
+//                               ],
+//                             ),
+//                           ),
+//                           Spacer(),
+//                           IconButton(
+//                               onPressed: () {
+//                                 Navigator.pushNamed(context, "/update_profile");
+//                               },
+//                               icon: Icon(Icons.edit_outlined))
+//                         ],
+//                       ),
+//                     ),
+//                     SizedBox(height: 10),
+//                     Divider(),
+//                     SizedBox(height: 10),
+//                     Text(
+//                       "Total Quantity of Products: ${cartData.totalQuantity}",
+//                       style: TextStyle(fontSize: 16),
+//                     ),
+//                     Text(
+//                       "Total Payable: ₹ ${cartData.totalCost}",
+//                       style:
+//                           TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+//                     ),
+//                   ],
+//                 ),
+//               );
+//             },
+//           ),
+//         ),
+//       ),
+//       bottomNavigationBar: Container(
+//         height: 60,
+//         padding: const EdgeInsets.all(8.0),
+//         child: ElevatedButton(
+//           child: Text("Proceed to pay"),
+//           onPressed: () async {
+//             final user = Provider.of<UserProvider>(context, listen: false);
+//             if (user.address == "" ||
+//                 user.phone == "" ||
+//                 user.name == "" ||
+//                 user.email == "") {
+//               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+//                   content: Text("Please fill your delivery details.")));
+//               return;
+//             }
+
+//             await initPaymentSheet(
+//                 Provider.of<CartProvider>(context, listen: false).totalCost);
+
+//             try {
+//               await Stripe.instance.presentPaymentSheet();
+
+//               final cart = Provider.of<CartProvider>(context, listen: false);
+//               User? currentUser = FirebaseAuth.instance.currentUser;
+//               List products = [];
+
+//               for (int i = 0; i < cart.products.length; i++) {
+//                 products.add({
+//                   "id": cart.products[i].id,
+//                   "name": cart.products[i].name,
+//                   "image": cart.products[i].image,
+//                   "single_price": cart.products[i].amount,
+//                   "total_price":
+//                       cart.products[i].amount * cart.carts[i].quantity,
+//                   "quantity": cart.carts[i].quantity
+//                 });
+//               }
+
+//               Map<String, dynamic> orderData = {
+//                 "user_id": currentUser!.uid,
+//                 "name": user.name,
+//                 "email": user.email,
+//                 "address": user.address,
+//                 "phone": user.phone,
+//                 "products": products,
+//                 "status": "PAID",
+//                 "created_at": DateTime.now().millisecondsSinceEpoch
+//               };
+
+//               // **Save the order to Firestore**
+//               await DbService().createOrder(data: orderData);
+
+//               // **Reduce the quantity of each product on Firestore**
+//               // for (int i = 0; i < cart.products.length; i++) {
+//               //   DbService().reduceQuantity(
+//               //       productId: cart.products[i].id, quantity: cart.carts[i].quantity);
+//               // }
+
+//               // **Clear the cart for the user**
+//               await DbService().emptyCart();
+//               Navigator.pop(context);
+
+//               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+//                 content: Text(
+//                   "Payment Done",
+//                   style: TextStyle(color: Colors.white),
+//                 ),
+//                 backgroundColor: Colors.green,
+//               ));
+//             } catch (e) {
+//               print("payment sheet error : $e");
+//               print("payment sheet failed");
+//               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+//                 content: Text(
+//                   "Payment Failed",
+//                   style: TextStyle(color: Colors.white),
+//                 ),
+//                 backgroundColor: Colors.redAccent,
+//               ));
+//             }
+//           },
+//           style: ElevatedButton.styleFrom(
+//               backgroundColor: Colors.blue, foregroundColor: Colors.white),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+
+import 'package:flutter/material.dart';
+import 'package:pet_door_user/models/cart_model.dart';
+import 'package:pet_door_user/provider/cart_provider.dart';
+import 'package:provider/provider.dart';
+
+class CartContainer extends StatefulWidget {
+  final String image, name, productId, breed;
+  final int new_price, old_price, maxQuantity, selectedQuantity;
+
+  const CartContainer({
+    super.key,
+    required this.image,
+    required this.breed,
+    required this.name,
+    required this.productId,
+    required this.new_price,
+    required this.old_price,
+    required this.maxQuantity,
+    required this.selectedQuantity,
+  });
+
+  @override
+  State<CartContainer> createState() => _CartContainerState();
+}
+
+class _CartContainerState extends State<CartContainer> {
+  int count = 1;
+
+  increaseCount(int max) {
+    if (count < max) {
+      setState(() => count++);
+      Provider.of<CartProvider>(context, listen: false)
+          .addToCart(CartModel(productId: widget.productId, quantity: count));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Maximum Quantity reached")),
+      );
+    }
+  }
+
+  decreaseCount() {
+    if (count > 1) {
+      setState(() => count--);
+      Provider.of<CartProvider>(context, listen: false)
+          .decreaseCount(widget.productId);
+    }
+  }
+
+  @override
+  void initState() {
+    count = widget.selectedQuantity;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      elevation: 2,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    widget.image,
+                    height: 60,
+                    width: 60,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey.shade800,
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        widget.breed,
+                        style: TextStyle(
+                            fontSize: 14, color: Colors.grey.shade600),
+                      ),
+                    ],
+                  ),
+                ),
+                CircleAvatar(
+                  child: IconButton(
+                    onPressed: () {
+                      Provider.of<CartProvider>(context, listen: false)
+                          .deleteItem(widget.productId);
+                    },
+                    icon: Icon(Icons.delete, color: Colors.red.shade400),
+                  ),
+                ),
+              ],
+            ),
+            Divider(color: Colors.grey.shade300),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.remove, color: Colors.black, size: 18),
+                        onPressed: decreaseCount,
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                          "$count",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.add, color: Colors.black, size: 18),
+                        onPressed: () => increaseCount(widget.maxQuantity),
+                      ),
+                    ],
+                  ),
+                ),
+                Text(
+                  "₹${widget.new_price * count}",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green.shade700,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+//mmmmmmmmmmmmcheckkkkkkkkkkkout
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:pet_door_user/controllers/db_service.dart';
+import 'package:pet_door_user/controllers/payments.dart';
+import 'package:pet_door_user/provider/cart_provider.dart';
+import 'package:pet_door_user/provider/user_provider.dart';
+import 'package:pet_door_user/widgets/appbar.dart';
+import 'package:provider/provider.dart';
+
+class CheckoutPage extends StatefulWidget {
+  const CheckoutPage({super.key});
+
+  @override
+  State<CheckoutPage> createState() => _CheckoutPageState();
+}
+
+class _CheckoutPageState extends State<CheckoutPage> {
+  int discount = 0;
+  int toPay = 0;
+  String discountText = "";
+
+  bool paymentSuccess = false;
+  Map<String, dynamic> dataOfOrder = {};
+
+  Future<void> initPaymentSheet(int cost) async {
+    try {
+      final user = Provider.of<UserProvider>(context, listen: false);
+      // 1. create payment intent on the server
+      final data = await createPaymentIntent(
+          name: user.name,
+          address: user.address,
+          amount: (cost * 100).toString());
+
+      // 2. initialize the payment sheet
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          // Set to true for custom flow
+          customFlow: false,
+          // Main params
+          merchantDisplayName: 'Flutter Stripe Store Demo',
+          paymentIntentClientSecret: data['client_secret'],
+          // Customer keys
+          customerEphemeralKeySecret: data['ephemeralKey'],
+          customerId: data['id'],
+          // Extra options
+
+          style: ThemeMode.dark,
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CustomAppBar(title: 'Checkout'),
+      body: SingleChildScrollView(
+        child: Consumer<UserProvider>(
+          builder: (context, userData, child) => Consumer<CartProvider>(
+            builder: (context, cartData, child) {
+              return Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Delivery Details",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * .65,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  userData.name,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Text(userData.email),
+                                Text(userData.address),
+                                Text(userData.phone),
+                              ],
+                            ),
+                          ),
+                          Spacer(),
+                          IconButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/update_profile");
+                              },
+                              icon: Icon(Icons.edit_outlined))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Divider(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Total Quantity of Products: ${cartData.totalQuantity}",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text(
+                      "Sub Total: ₹ ${cartData.totalCost}",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    Divider(),
+                    Text(
+                      "Total Payable: ₹ ${cartData.totalCost - discount}",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 60,
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          child: Text("Procced to pay"),
+          onPressed: () async {
+            final user = Provider.of<UserProvider>(context, listen: false);
+            if (user.address == "" ||
+                user.phone == "" ||
+                user.name == "" ||
+                user.email == "") {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("Please fill your delivery details.")));
+              return;
+            }
+
+            await initPaymentSheet(
+                Provider.of<CartProvider>(context, listen: false).totalCost -
+                    discount);
+
+            try {
+              await Stripe.instance.presentPaymentSheet();
+
+              final cart = Provider.of<CartProvider>(context, listen: false);
+
+              User? currentUser = FirebaseAuth.instance.currentUser;
+              List products = [];
+
+              for (int i = 0; i < cart.products.length; i++) {
+                products.add({
+                  "id": cart.products[i].id,
+                  "name": cart.products[i].name,
+                  "image": cart.products[i].image,
+                  "single_price": cart.products[i].amount,
+                  "total_price":
+                      cart.products[i].amount * cart.carts[i].quantity,
+                  "quantity": cart.carts[i].quantity
+                });
+              }
+
+              // ORDER STATUS
+              // PAID - paid money by user
+              // SHIPPED - item shipped
+              // CANCELLED - item cancelled
+              // DELIVERED - order delivered
+
+              Map<String, dynamic> orderData = {
+                "user_id": currentUser!.uid,
+                "name": user.name,
+                "email": user.email,
+                "address": user.address,
+                "phone": user.phone,
+                "discount": discount,
+                "total": cart.totalCost - discount,
+                "products": products,
+                "status": "PAID",
+                "created_at": DateTime.now().millisecondsSinceEpoch
+              };
+
+              dataOfOrder = orderData;
+
+              // creating new order
+              await DbService().createOrder(data: orderData);
+
+//  reduce the quantity of product on firestore
+              for (int i = 0; i < cart.products.length; i++) {
+                DbService().reduceQuantity(
+                    productId: cart.products[i].id,
+                    quantity: cart.carts[i].quantity);
+              }
+
+              // clear the cart for the user
+              await DbService().emptyCart();
+
+              paymentSuccess = true;
+
+//  close the checkout page
+              Navigator.pop(context);
+
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+                  "Payment Done",
+                  style: TextStyle(color: Colors.white),
+                ),
+                backgroundColor: Colors.green,
+              ));
+            } catch (e) {
+              print("payment sheet error : $e");
+              print("payment sheet failed");
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+                  "Payment Failed",
+                  style: TextStyle(color: Colors.white),
+                ),
+                backgroundColor: Colors.redAccent,
+              ));
+            }
+
+// if(paymentSuccess){
+//   MailService().sendMailFromGmail(user.email, OrdersModel.fromJson(dataOfOrder, ""));
+// }
+          },
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue, foregroundColor: Colors.white),
+        ),
+      ),
+    );
+  }
+}
+
+
+import 'package:flutter/material.dart';
+import 'package:pet_door_user/controllers/db_service.dart';
+import 'package:pet_door_user/models/category_model.dart';
+import 'package:shimmer/shimmer.dart';
+
+class CategoryContainer extends StatefulWidget {
+  const CategoryContainer({super.key});
+
+  @override
+  State<CategoryContainer> createState() => _CategoryContainerState();
+}
+
+class _CategoryContainerState extends State<CategoryContainer> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+        stream: DbService().readCategories(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List<CategoryModel> categories =
+                CategoryModel.fromJsonList(snapshot.data!.docs)
+                    as List<CategoryModel>;
+            if (categories.isEmpty) {
+              return SizedBox();
+            } else {
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: categories
+                      .map((cat) =>
+                          CategoryButton(imagepath: cat.image, name: cat.name))
+                      .toList(),
+                ),
+              );
+            }
+          } else {
+            return Shimmer(
+                child: Container(
+                  height: 90,
+                  width: double.infinity,
+                ),
+                gradient: LinearGradient(
+                    colors: [Colors.grey.shade200, Colors.white]));
+          }
+        });
+  }
+}
+
+class CategoryButton extends StatefulWidget {
+  final String imagepath, name;
+  const CategoryButton(
+      {super.key, required this.imagepath, required this.name});
+
+  @override
+  State<CategoryButton> createState() => _CategoryButtonState();
+}
+
+class _CategoryButtonState extends State<CategoryButton> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, "/specific_products",
+          arguments: {"name": widget.name}),
+      child: Container(
+        margin: EdgeInsets.all(4),
+        padding: EdgeInsets.all(4),
+        height: 100,
+        width: 95,
+        decoration: BoxDecoration(
+            color: Colors.grey.shade200,
+            borderRadius: BorderRadius.circular(20)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.network(
+                widget.imagepath,
+                height: 60, // Fixed height
+                width: 60, // Fixed width
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+                "${widget.name.substring(0, 1).toUpperCase()}${widget.name.substring(1)} ")
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:pet_door_user/controllers/payments.dart';
+import 'package:pet_door_user/provider/cart_provider.dart';
+import 'package:pet_door_user/provider/user_provider.dart';
+import 'package:pet_door_user/widgets/appbar.dart';
+import 'package:pet_door_user/widgets/colors.dart';
+import 'package:provider/provider.dart';
+
+class CheckoutPage extends StatefulWidget {
+  const CheckoutPage({super.key});
+
+  @override
+  State<CheckoutPage> createState() => _CheckoutPageState();
+}
+
+class _CheckoutPageState extends State<CheckoutPage> {
+  int discount = 0;
+  int toPay = 0;
+  String discountText = "";
+
+  bool paymentSuccess = false;
+  Map<String, dynamic> dataOfOrder = {};
+
+  Future<void> initPaymentSheet(int cost) async {
+    try {
+      final user = Provider.of<UserProvider>(context, listen: false);
+      final data = await createPaymentIntent(
+        name: user.name,
+        address: user.address,
+        amount: (cost * 100).toString(),
+      );
+
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          customFlow: false,
+          merchantDisplayName: 'Flutter Stripe Store Demo',
+          paymentIntentClientSecret: data['client_secret'],
+          customerEphemeralKeySecret: data['ephemeralKey'],
+          customerId: data['id'],
+          style: ThemeMode.dark,
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: bgr,
+      appBar: CustomAppBar(
+        title: 'Checkout',
+        trailing: IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, "/home");
+            },
+            icon: Icon(Icons.home)),
+      ),
+      body: SingleChildScrollView(
+        child: Consumer<UserProvider>(
+          builder: (context, userData, child) => Consumer<CartProvider>(
+            builder: (context, cartData, child) {
+              return Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Delivery Details",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                    // Delivery Details Section
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * .65,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(userData.name,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500)),
+                                Text(userData.email),
+                                Text(userData.address),
+                                Text(userData.phone),
+                              ],
+                            ),
+                          ),
+                          Spacer(),
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, "/update_profile");
+                            },
+                            icon: Icon(Icons.edit_outlined),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Divider(),
+                    SizedBox(height: 10),
+                    Text(
+                      "Items in Cart",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                    // List of Cart Items
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: cartData.carts.length,
+                      itemBuilder: (context, index) {
+                        final product = cartData.products[index];
+                        return ListTile(
+                          leading: Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(product.image),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          title: Text(product.name),
+                          subtitle: Text(
+                              "₹${product.amount} x ${cartData.carts[index].quantity}"),
+                          trailing: Text(
+                              "₹${product.amount * cartData.carts[index].quantity}"),
+                        );
+                      },
+                    ),
+                    Divider(),
+                    Text(
+                      "Total Quantity of Products: ${cartData.totalQuantity}",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      "Sub Total: ₹ ${cartData.totalCost}",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Divider(),
+                    Text(
+                      "Total Payable: ₹ ${cartData.totalCost - discount}",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 60,
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          child: Text("Proceed to pay"),
+          onPressed: () async {
+            final user = Provider.of<UserProvider>(context, listen: false);
+            if (user.address.isEmpty ||
+                user.phone.isEmpty ||
+                user.name.isEmpty ||
+                user.email.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("Please fill your delivery details.")));
+              return;
+            }
+
+            await initPaymentSheet(
+                Provider.of<CartProvider>(context, listen: false).totalCost -
+                    discount);
+
+            try {
+              await Stripe.instance.presentPaymentSheet();
+              // Handle payment success
+            } catch (e) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Payment Failed"),
+                backgroundColor: Colors.redAccent,
+              ));
+            }
+          },
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue, foregroundColor: Colors.white),
+        ),
+      ),
+    );
+  }
+}
+
+
+class PetCardWidget extends StatelessWidget {
+  final AnimalModel product;
+  final Function onFavoriteToggle;
+
+  const PetCardWidget({
+    Key? key,
+    required this.product,
+    required this.onFavoriteToggle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ViewProduct(),
+            settings: RouteSettings(
+              arguments: product,
+            ),
+          ),
+        );
+      },
+      child: Card(
+        margin: EdgeInsets.symmetric(vertical: 10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        elevation: 5,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  product.image,
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.name,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2D4059),
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      "Breed: ${product.breed}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey[600],
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      "Price: ₹${product.amount}",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              IconButton(
+                icon: Icon(
+                  product.isFavorite ? Icons.favorite : Icons.favorite_outline,
+                  color: Colors.red,
+                ),
+                onPressed: () => onFavoriteToggle(),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
