@@ -87,7 +87,7 @@ class Terms extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16.0),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),

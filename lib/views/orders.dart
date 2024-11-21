@@ -49,7 +49,7 @@ class _OrdersPageState extends State<OrdersPage> {
         style: TextStyle(color: textColor),
       ),
       color: bgColor,
-      padding: EdgeInsets.all(8),
+      padding:const EdgeInsets.all(8),
     );
   }
 
@@ -119,8 +119,8 @@ class _ViewOrderState extends State<ViewOrder> {
             onPressed: () {
               Navigator.pushNamed(context, "/home");
             },
-            icon: Icon(Icons.home)),
-      ),
+            icon:const Icon(Icons.home)),
+      ), 
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -136,7 +136,7 @@ class _ViewOrderState extends State<ViewOrder> {
               ),
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 color: Colors.grey.shade100,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,8 +154,8 @@ class _ViewOrderState extends State<ViewOrder> {
                 children: args.products
                     .map((e) => Container(
                           width: double.infinity,
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.all(4),
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(10),
@@ -181,7 +181,7 @@ class _ViewOrderState extends State<ViewOrder> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Expanded(child: Text(e.name)),
@@ -194,7 +194,7 @@ class _ViewOrderState extends State<ViewOrder> {
                               ),
                               Text(
                                 "₹${e.total_price.toString()}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20),
                               ),
                             ],
@@ -210,38 +210,40 @@ class _ViewOrderState extends State<ViewOrder> {
                     Text(
                       "Total : ₹${args.total}",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                          const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     Text(
                       "Status : ${args.status}",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                          const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+             const SizedBox(
                 height: 8,
               ),
               args.status == "PAID" || args.status == "ON_THE_WAY"
                   ? SizedBox(
                       height: 60,
                       width: MediaQuery.of(context).size.width * .9,
-                      child: ElevatedButton(
-                        child: Text("Modify Order"),
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) => ModifyOrder(
-                                    order: args,
-                                  ));
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            foregroundColor: Colors.white),
+                      child: Center(
+                        child: ElevatedButton(
+                          child: const Text("Modify Order"),
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) => ModifyOrder(
+                                      order: args,
+                                    ));
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              foregroundColor: Colors.white),
+                        ),
                       ),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           ),
         ),
@@ -262,12 +264,12 @@ class _ModifyOrderState extends State<ModifyOrder> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Modify this order"),
+      title: const Text("Modify this order"),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Chosse want you want to do"),
+          const Text("Chosse want you want to do"),
           TextButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -289,7 +291,7 @@ class _ModifyOrderState extends State<ModifyOrder> {
                           Navigator.pop(context);
                         }));
               },
-              child: Text("Cancel Order"))
+              child: const Text("Cancel Order"))
         ],
       ),
     );
